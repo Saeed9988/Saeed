@@ -27,7 +27,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # Arrow key control
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]: dx, dy = -CELL_SIZE, 0
     if keys[pygame.K_RIGHT]: dx, dy = CELL_SIZE, 0
@@ -38,7 +37,6 @@ while running:
     head = (snake[0][0] + dx, snake[0][1] + dy)
     snake.insert(0, head)
 
-    # Eat food or move normally
     if head == food:
         food = (
             random.randrange(0, WIDTH, CELL_SIZE),
@@ -47,7 +45,6 @@ while running:
     else:
         snake.pop()
 
-    # Check for collision (walls or self)
     if (
         head in snake[1:] or
         head[0] < 0 or head[0] >= WIDTH or
@@ -63,4 +60,5 @@ while running:
     clock.tick(10)  # Frames per second
 
 pygame.quit()
+
 
